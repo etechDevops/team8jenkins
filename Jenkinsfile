@@ -23,7 +23,12 @@ pipeline{
 		}
 		stage('5-welcome_message'){
 			steps{
-				echo "welcome to Etech Team8 Jenkins"
+				echo "welcome to Jenkins pipeline security"
+			}
+		}
+		stage('6-securitycheck'){
+			steps{
+				sh 'bash -x /var/lib/jenkins/workspace/jenkins-demo2/jenkinstest.sh'
 			}
 		}
 	}
