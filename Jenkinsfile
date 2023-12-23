@@ -1,5 +1,7 @@
 pipeline{
-	agent any 
+	agent{
+		label 'slave1'
+	}
 	stages{
 		stage('1-action1'){
 			steps{
@@ -17,6 +19,9 @@ pipeline{
 			}
 		}
 		stage('4-action4'){
+			agent{
+				label 'slave2'
+			}
 			steps{
 				sh 'lscpu'
 			}
@@ -27,6 +32,9 @@ pipeline{
 			}
 		}
 		stage('6-securitycheck'){
+			agent{
+				label 'slave1'
+			}
 			steps{
 				sh 'bash -x /var/lib/jenkins/workspace/jenkins-demo2/jenkinstest.sh'
 			}
@@ -46,6 +54,9 @@ pipeline{
 			}
 		}
 		stage('8-endofjobs'){
+			agent{
+				label 'slave2'
+			}
 			steps{
 				echo "End of pipeline"
 			}
