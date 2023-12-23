@@ -31,5 +31,24 @@ pipeline{
 				sh 'bash -x /var/lib/jenkins/workspace/jenkins-demo2/jenkinstest.sh'
 			}
 		}
+		stage('7-parallel-job'){
+			parallel{
+				stage('1-firstparajob'){
+					steps{
+						sh 'cat /etc/passwd'
+					}
+				}
+				stage('2-secondparajob'){
+					steps{
+						sh 'cat /etc/os-release'
+					}
+				}
+			}
+		}
+		stage('8-endofjobs'){
+			steps{
+				echo "End of pipeline"
+			}
+		}
 	}
 }
