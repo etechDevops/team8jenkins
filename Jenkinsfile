@@ -31,14 +31,7 @@ pipeline{
 				echo "welcome to Jenkins pipeline security"
 			}
 		}
-		stage('6-securitycheck'){
-			agent{
-				label 'slave1'
-			}
-			steps{
-				sh 'bash -x /var/lib/jenkins/workspace/jenkins-demo2/jenkinstest.sh'
-			}
-		}
+		
 		stage('7-parallel-job'){
 			parallel{
 				stage('1-firstparajob'){
